@@ -1,7 +1,7 @@
 from .const import DOMAIN, PLATFORMS
 
-async def async_setup(hass, config):
-    hass.states.async_set("trackr.world", "Paulus")
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    #hass.states.async_set("trackr.world", "Paulus")
 
     # Return boolean to indicate that initialization was successful.
     return True
