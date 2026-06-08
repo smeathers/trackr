@@ -12,6 +12,13 @@ from .const import DOMAIN
 
 class TrackrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Example config flow."""
+
+    VERSION = 1
+
+    def __init__(self) -> None:
+        """Set up a new config flow for Aranet."""
+        self._discovery_info: BluetoothServiceInfoBleak | None = None
+        
     def _show_main_form(self, errors=None):
         return self._show_user_form("user", DOMAIN_SCHEMA, errors or {})
         
