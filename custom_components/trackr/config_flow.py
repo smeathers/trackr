@@ -19,7 +19,7 @@ class TrackrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self._discovered_device: DeviceData | None = None
         self._discovered_devices: dict[str, Discovery] = {}
         
-    def _show_main_form(self, errors=None):
-        return self._show_user_form("user", DOMAIN_SCHEMA, errors or {})
+    #def _show_main_form(self, errors=None):
+    #    return self._show_user_form("user", DOMAIN_SCHEMA, errors or {})
         
-    async def async_step_user(self, info):
+    #async def async_step_user(self, info):
