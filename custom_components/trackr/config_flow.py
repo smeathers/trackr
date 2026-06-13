@@ -1,21 +1,16 @@
-import copy
-import logging
+"""Config flow for the NEW_NAME integration."""
 
-import voluptuous as vol
-from homeassistant.components.bluetooth import BluetoothServiceInfoBleak
-from homeassistant import config_entries, exceptions
-#from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers import config_entry_flow
+
 from .const import DOMAIN
 
 
-class TrackrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Example config flow."""
+async def _async_has_devices(hass: HomeAssistant) -> bool:
+    """Return if there are devices that can be discovered."""
+    # TODO Check if there are any devices that can be discovered in the network.
+    devices = await hass.async_add_executor_job(my_pypi_dependency.discover)
+    return len(devices) > 0
 
-    VERSION = 1
-    async def async_step_user(self, user_input: Optional[Dict[str, Any]] = None):
-        """Invoked when a user initiates a flow via the user interface."""
-        errors: Dict[str, str] = {}
-    
-        return self.async_show_form(
-            step_id="user", data_schema=AUTH_SCHEMA, errors=errors
-        )
+
+config_entry_flow.register_discovery_flow(DOMAIN, "NEW_NAME", _async_has_devices)
