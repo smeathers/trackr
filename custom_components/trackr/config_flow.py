@@ -23,4 +23,6 @@ class TrackrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     #    return self._show_user_form("user", DOMAIN_SCHEMA, errors or {})
         
     async def async_step_user(self, user_input=None) -> ConfigFlowResult:
-        return self.async_show_form()
+        return self.async_show_form(
+            step_id="user", data_schema=STEP_USER_DATA_SCHEMA, errors=errors
+        )
